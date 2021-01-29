@@ -1,0 +1,71 @@
+﻿@model PagingHelper<Product>
+
+@{
+    ViewData["Title"] = "products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.NextPage ? "disabled" : "";
+}
+
+
+@* Support Fillter Section *@
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+
+    <div class="input-group mb-3">
+        <select id="FilterType" name="FilterType" style="width: 120px;margin:5px;">
+            <option>Filter by</option>
+            <option>Gategory</option>
+            <option>Size</option>
+        </select>
+
+        <input type="text" id="filter" name="filter" value="@ViewBag.filter" autocomplete="off" style="width:180px; margin:5px;">
+
+        <button type="submit" class="btn btn-primary"> go</button>
+
+        @Html.ActionLink("reset filter", "Index", "Home")
+
+
+    </div>
+
+
+
+}
+
+
+
+
+
+
+<div class="row">
+    @foreach (var prod in Model)
+    {
+        <div class="col-md-3" style=" border: 2px solid">
+
+            <div style="border-bottom: 1px solid medium">
+                <h3 class="font-weight-bold"> @prod.Title - @prod.Category </h3>
+            </div>
+            <img class="img-fluid" src="~/img/@(prod.ArtId).jpg" />
+
+            <h6 class="mb-2 text-muted"> @prod.ArtDescription</h6>
+            <h6 class="mb-2 text-muted">size: @prod.Size</h6>
+            <h6 class="mb-2 text-muted"> @prod.Artist</h6>
+            <h3 class="font-weight-bold">Price: @prod.Price </h3>
+            @Html.ActionLink("view", "ProductDetails", "Home", new { id = @prod.Id }) ||
+            <span>
+                @Html.ActionLink("Add TO Cart", "ProductDetails", "Home", new { id = @prod.Id })
+            </span>
+        </div>
+    }
+</div>
+
+
+
+@Html.ActionLink("< Prev", "Index", "Home",new {pageNumber = Model.PageNumber - 1, filter = ViewBag.filter, FilterType = ViewBag.FilterType})
+@Html.ActionLink("Next >>", "Index", "Home", new { pageNumber = Model.PageNumber + 1, filter = ViewBag.filter, FilterType = ViewBag.FilterType })
+
+
+

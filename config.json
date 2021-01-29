@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+
+    "ConnectionString": "server=(localdb)\\ProjectsV13;Database=InterviewProjectDB;Integrated Security=True;MultiSubnetFailover=True;"
+  }
+}

@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\SK-A-1595.jpg" />
+    <None Include="wwwroot\img\SK-A-1935.jpg" />
+    <None Include="wwwroot\img\SK-A-2351.jpg" />
+    <None Include="wwwroot\img\SK-A-2391.jpg" />
+    <None Include="wwwroot\img\SK-A-2860.jpg" />
+    <None Include="wwwroot\img\SK-A-3066.jpg" />
+    <None Include="wwwroot\img\SK-A-3137.jpg" />
+    <None Include="wwwroot\img\SK-A-3138.jpg" />
+    <None Include="wwwroot\img\SK-A-3262.jpg" />
+    <None Include="wwwroot\img\SK-A-3276.jpg" />
+    <None Include="wwwroot\img\SK-A-3298.jpg" />
+    <None Include="wwwroot\img\SK-A-3307.jpg" />
+    <None Include="wwwroot\img\SK-A-3340.jpg" />
+    <None Include="wwwroot\img\SK-A-3341.jpg" />
+    <None Include="wwwroot\img\SK-A-3477.jpg" />
+    <None Include="wwwroot\img\SK-A-358.jpg" />
+    <None Include="wwwroot\img\SK-A-3981.jpg" />
+    <None Include="wwwroot\img\SK-A-3982.jpg" />
+    <None Include="wwwroot\img\SK-A-4019.jpg" />
+    <None Include="wwwroot\img\SK-A-4050.jpg" />
+    <None Include="wwwroot\img\SK-A-4057.jpg" />
+    <None Include="wwwroot\img\SK-A-4119.jpg" />
+    <None Include="wwwroot\img\SK-A-4674.jpg" />
+    <None Include="wwwroot\img\SK-A-4717.jpg" />
+    <None Include="wwwroot\img\SK-A-4833.jpg" />
+    <None Include="wwwroot\img\SK-A-4885.jpg" />
+    <None Include="wwwroot\img\SK-A-5033.jpg" />
+    <None Include="wwwroot\img\SK-A-91.jpg" />
+    <None Include="wwwroot\img\SK-C-1747.jpg" />
+    <None Include="wwwroot\img\SK-C-1768.jpg" />
+    <None Include="wwwroot\img\SK-C-216.jpg" />
+    <None Include="wwwroot\img\SK-C-251.jpg" />
+    <None Include="wwwroot\img\SK-C-5.jpg" />
+    <None Include="wwwroot\img\SK-C-597.jpg" />
+    <None Include="wwwroot\img\SK-C-6.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="System.Web.Mvc.Extensions" Version="1.1.1.2" />
+    <PackageReference Include="SystemWeb" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
