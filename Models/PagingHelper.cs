@@ -20,7 +20,7 @@ namespace ECOMMERCEWebApp.Models
             TotalPages = (itemsCount / pageSize);
             this.AddRange(items);
         }
-        public bool NextPage
+        public bool HasNextPage
         {
             get
             {
@@ -28,7 +28,7 @@ namespace ECOMMERCEWebApp.Models
             }
         }
 
-        public bool PreviousPage
+        public bool HasPreviousPage
         {
             get
             {

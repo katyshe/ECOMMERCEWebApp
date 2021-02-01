@@ -5,67 +5,77 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    var prevDisabled = !Model.PreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.NextPage ? "disabled" : "";
+    var Hasprev = Model.HasPreviousPage;
+    var HasNext = Model.HasNextPage;
 }
 
 
 @* Support Fillter Section *@
-
-@using (Html.BeginForm("Index", "Home", FormMethod.Get))
-{
+<div class="container">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
 
     <div class="input-group mb-3">
-        <select id="FilterType" name="FilterType" style="width: 120px;margin:5px;">
+        <select id="FilterType" name="FilterType"  style="width: 120px;margin:5px;">
             <option>Filter by</option>
             <option>Gategory</option>
             <option>Size</option>
         </select>
 
-        <input type="text" id="filter" name="filter" value="@ViewBag.filter" autocomplete="off" style="width:180px; margin:5px;">
+        
+       <input type="text" id="filter" name="filter" value="@ViewBag.filter" autocomplete="off" style="width:180px; margin:5px;">
+        
 
-        <button type="submit" class="btn btn-primary"> go</button>
 
-        @Html.ActionLink("reset filter", "Index", "Home")
+        <button style="width:90px; height:38px; " type="submit" class="btn btn-primary"> go</button>
+
+        <span style="margin:5px">@Html.ActionLink("reset filter", "Index", "Home")</span>
 
 
     </div>
 
 
 
-}
-
-
-
-
+    }
+</div>
 
 
 <div class="row">
     @foreach (var prod in Model)
     {
-        <div class="col-md-3" style=" border: 2px solid">
+    <div class="col-md-3" style=" border: 2px solid">
 
-            <div style="border-bottom: 1px solid medium">
-                <h3 class="font-weight-bold"> @prod.Title - @prod.Category </h3>
-            </div>
-            <img class="img-fluid" src="~/img/@(prod.ArtId).jpg" />
-
-            <h6 class="mb-2 text-muted"> @prod.ArtDescription</h6>
-            <h6 class="mb-2 text-muted">size: @prod.Size</h6>
-            <h6 class="mb-2 text-muted"> @prod.Artist</h6>
-            <h3 class="font-weight-bold">Price: @prod.Price </h3>
-            @Html.ActionLink("view", "ProductDetails", "Home", new { id = @prod.Id }) ||
-            <span>
-                @Html.ActionLink("Add TO Cart", "ProductDetails", "Home", new { id = @prod.Id })
-            </span>
+        <div style="border-bottom: 1px solid medium">
+            <h4 class="font-weight-bold"> @prod.Title </h4>
         </div>
+        <img class="img-fluid" src="~/img/@(prod.ArtId).jpg" />
+
+        <h4 class="font-weight-bold"> @prod.Category </h4>
+        <h6 class="mb-2 text-muted">Description: @prod.ArtDescription</h6>
+        <h6 class="mb-2 text-muted">size: @prod.Size</h6>
+        <h6 class="mb-2 text-muted">ArtistName @prod.Artist</h6>
+        <h3 class="font-weight-bold">Price: @prod.Price </h3>
+
+        <a style="margin:5px;" class="btn btn-outline-info" asp-controller="Home" asp-action="ProductDetails" asp-route-id="@prod.Id">ShowMore</a>
+        <a style="margin:5px;" class="btn btn-outline-info" asp-controller="Home" asp-action="AddToCart" asp-route-prodId="@prod.Id">AddTOCart</a>
+        @*<span style="margin:5px">@Html.ActionLink("view", "ProductDetails", "Home", new { id = @prod.Id }) </span>*@
+
+        @*<span style="margin:5px"> @Html.ActionLink("Add TO Cart", "AddToCart", "Home", new { prodId = @prod.Id })</span>*@
+
+    </div>
     }
 </div>
 
 
+@if(@Hasprev)
+{
+<span style="margin: 5px;">@Html.ActionLink("< Prev", "Index", "Home", new { pageNumber = Model.PageNumber - 1, filter = ViewBag.filter, FilterType = ViewBag.FilterType })</span>
+}
+@if(@HasNext)
+{
+<span style="margin: 5px;" >@Html.ActionLink("Next >>", "Index", "Home", new { pageNumber = Model.PageNumber + 1, filter = ViewBag.filter, FilterType = ViewBag.FilterType })</span>
+}
 
-@Html.ActionLink("< Prev", "Index", "Home",new {pageNumber = Model.PageNumber - 1, filter = ViewBag.filter, FilterType = ViewBag.FilterType})
-@Html.ActionLink("Next >>", "Index", "Home", new { pageNumber = Model.PageNumber + 1, filter = ViewBag.filter, FilterType = ViewBag.FilterType })
 
 
 

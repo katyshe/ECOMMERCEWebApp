@@ -17,8 +17,7 @@ namespace ECOMMERCEWebApp.Data
 
         public IList<Product> GetAllProducts()
         {
-            var products = Econtext.Products;
-                           
+            var products = Econtext.Products;                   
 
             return products.ToList();
 
@@ -58,5 +57,17 @@ namespace ECOMMERCEWebApp.Data
                           
             return prod;
         }
+
+      
+
+      
+
+
+     
+
+       
+
+
+      
     }
 }

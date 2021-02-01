@@ -1,6 +1,8 @@
 {
   "ConnectionStrings": {
 
-    "ConnectionString": "server=(localdb)\\ProjectsV13;Database=InterviewProjectDB;Integrated Security=True;MultiSubnetFailover=True;"
+    "ConnectionString": "server=(localdb)\\ProjectsV13;Database=ECOMMERCEDB;Integrated Security=True;MultiSubnetFailover=True;"
+
   }
 }
+

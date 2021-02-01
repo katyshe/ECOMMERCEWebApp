@@ -1,4 +1,5 @@
 using ECOMMERCEWebApp.Data;
+using ECOMMERCEWebApp.Data.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,10 @@ namespace ECOMMERCEWebApp
 
             services.AddTransient<EDataFeeder>();
             services.AddScoped<EcommerceRepository>();
+            //when the user come to the site it will get an order for the user so we van check if the session is still exsit 
+            services.AddScoped<Order>(order => Order.GetOrder(order));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             
             services.AddControllersWithViews();
         }
@@ -51,6 +56,8 @@ namespace ECOMMERCEWebApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

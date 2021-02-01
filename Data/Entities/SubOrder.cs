@@ -13,10 +13,13 @@ namespace ECOMMERCEWebApp.Data.Entities
 
         public Product Product { get; set; }
 
+        public int productId { get; set; }
+
         public decimal productprice { get; set; }
 
         public decimal Totalprice { get; set; }
 
-        public Order Order { get; set; }
+        public string OrderId { get; set; }
+       
     }
 }

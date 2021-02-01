@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace ECOMMERCEWebApp.Data.Entities
 {
-    public class User  : IdentityUser
+    public class User
     {
-        
+        public int id { get; set; }
         public string Name { get; set; }
 
         public string LastName { get; set; }
 
-        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public IList<Order> Orders { get; set; }
+        public string Address { get; set; }
     }
 }

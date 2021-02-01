@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECOMMERCEWebApp.Migrations
 {
     [DbContext(typeof(DBServerConnection))]
-    [Migration("20210126173536_InitialDb")]
-    partial class InitialDb
+    [Migration("20210131182136_InitialECOMMERCEDB")]
+    partial class InitialECOMMERCEDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,26 +20,6 @@ namespace ECOMMERCEWebApp.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
-
-            modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Orders");
-                });
 
             modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.Product", b =>
                 {
@@ -96,8 +76,8 @@ namespace ECOMMERCEWebApp.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
@@ -110,16 +90,14 @@ namespace ECOMMERCEWebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
                     b.HasIndex("ProductId");
 
-                    b.ToTable("SubOrder");
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -136,43 +114,18 @@ namespace ECOMMERCEWebApp.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.Order", b =>
-                {
-                    b.HasOne("ECOMMERCEWebApp.Data.Entities.User", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.SubOrder", b =>
                 {
-                    b.HasOne("ECOMMERCEWebApp.Data.Entities.Order", "Order")
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("ECOMMERCEWebApp.Data.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
 
-                    b.Navigation("Order");
-
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.Order", b =>
-                {
-                    b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("ECOMMERCEWebApp.Data.Entities.User", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

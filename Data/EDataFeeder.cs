@@ -28,8 +28,24 @@ namespace ECOMMERCEWebApp.Data
                 var products = Newtonsoft.Json.JsonConvert.DeserializeObject<IList<Product>>(JSON);
                 Econtext.Products.AddRange(products);
 
-                Econtext.SaveChanges();
+                
             }
+            //insert an test User
+            if (!Econtext.Users.Any())
+            {
+                User U = new User();
+                U.Name = "katy";
+                U.LastName = "shehady";
+                U.PhoneNumber = "0527731163";
+                U.Address = "Israel";
+                Econtext.Users.AddRange(U);
+                
+            }
+            
+
+
+            Econtext.SaveChanges();
+
         }
 
 
