@@ -11,7 +11,7 @@ namespace ECOMMERCEWebApp.Models
     {
         public int PageNumber { get; private set; }
 
-        //this filed will help us define if there is another page that we have to show 
+        //this field  help us define if there is another page that we have to show 
         public int TotalPages { get; private set; }
 
         public PagingHelper(List<T> items, int pageNumber, int pageSize, int itemsCount)
@@ -41,9 +41,6 @@ namespace ECOMMERCEWebApp.Models
             var itemCount = items.Count();
             var pageditems = items.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
             return new PagingHelper<T>(pageditems, pageNumber, pageSize, itemCount);
-
-
-
         }
 
 

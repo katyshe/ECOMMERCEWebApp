@@ -104,7 +104,10 @@ namespace ECOMMERCEWebApp.Data.Entities
             
         }
 
-
+        /// <summary>
+        /// this function Calculates the items price for this order
+        /// </summary>
+        /// <returns></returns>
         public decimal GetOrderTotalPrice()
         {
             var total = econtext.Items

@@ -37,7 +37,7 @@ namespace ECOMMERCEWebApp.Data
 
         }
         /// <summary>
-        /// 
+        /// get all products with specific size
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
@@ -57,17 +57,5 @@ namespace ECOMMERCEWebApp.Data
                           
             return prod;
         }
-
-      
-
-      
-
-
-     
-
-       
-
-
-      
     }
 }
